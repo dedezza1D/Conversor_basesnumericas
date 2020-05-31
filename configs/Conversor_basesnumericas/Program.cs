@@ -104,13 +104,13 @@ namespace Calculator
             int convertToDecimal = 0;
 
             if (optionOne.Equals(1)) {
-                convertToDecimal = ToDecimal(valueOne, TypeBase.Binary);
+                convertToDecimal = Convert.ToInt32(valueOne, 2);
             } else if (optionOne.Equals(2)) {
-                convertToDecimal = ToDecimal(valueOne, TypeBase.Octal);
+                convertToDecimal = Convert.ToInt32(valueOne, 8);
             } else if (optionOne.Equals(3)) {
                 convertToDecimal = int.Parse(valueOne);
             } else if (optionOne.Equals(4)) {
-                convertToDecimal = ToDecimal(valueOne, TypeBase.Hexadecimal);
+                convertToDecimal = Convert.ToInt32(valueOne, 16);;
             }
 
             Console.Clear();
@@ -146,13 +146,13 @@ namespace Calculator
             String convertToBase = "";
 
             if (optionTwo.Equals(1)) {
-                convertToBase = ToBase(convertToDecimal, TypeBase.Binary);
+                convertToBase = Convert.ToString(convertToDecimal, 2);
             } else if (optionTwo.Equals(2)) {
-                convertToBase = ToBase(convertToDecimal, TypeBase.Octal);
+                convertToBase = Convert.ToString(convertToDecimal, 8);
             } else if (optionTwo.Equals(3)) {
                 convertToBase = "" + convertToDecimal;
             } else if (optionTwo.Equals(4)) {
-                convertToBase = ToBase(convertToDecimal, TypeBase.Hexadecimal);
+                convertToBase = Convert.ToString(convertToDecimal, 16);
             }
 
             Console.Clear();
@@ -205,17 +205,18 @@ namespace Calculator
             templateCalcula();
             Console.WriteLine("Insira o valor do primeiro membro: ");
             string valueOne = Console.ReadLine();
+            string realTime = valueOne;
 
             int convertToDecimalOne = 0;
 
             if (optionOne.Equals(1)) {
-                convertToDecimalOne = ToDecimal(valueOne, TypeBase.Binary);
+                convertToDecimalOne = Convert.ToInt32(valueOne, 2);
             } else if (optionOne.Equals(2)) {
-                convertToDecimalOne = ToDecimal(valueOne, TypeBase.Octal);
+                convertToDecimalOne = Convert.ToInt32(valueOne, 8);
             } else if (optionOne.Equals(3)) {
                 convertToDecimalOne = int.Parse(valueOne);
             } else if (optionOne.Equals(4)) {
-                convertToDecimalOne = ToDecimal(valueOne, TypeBase.Hexadecimal);
+                convertToDecimalOne = Convert.ToInt32(valueOne, 16);
             }
 
             Console.Clear();
@@ -228,7 +229,10 @@ namespace Calculator
                     + "\n"
                     + "\n"
                     + "\n8. Voltar ao Menu Principal"
-                    + "\n9. Sair");
+                    + "\n9. Sair"
+                    + "\n"
+                    + "\n"
+                    + "\n                   Acompanhe sua operação: " + realTime);
 
             int optionTwo = int.Parse(Console.ReadLine());
 
@@ -248,6 +252,16 @@ namespace Calculator
                 return 1;
             }
 
+            if (optionTwo.Equals(1)) {
+                realTime += " + ";
+            } else if (optionTwo.Equals(2)) {
+                realTime += " - ";
+            } else if (optionTwo.Equals(3)) {
+                realTime += " x ";
+            } else if (optionTwo.Equals(4)) {
+                realTime += " ÷ ";
+            }
+
             Console.Clear();
             templateCalcula();
             Console.WriteLine("Escolha a base que representará o segundo membro:");
@@ -258,7 +272,10 @@ namespace Calculator
                     + "\n"
                     + "\n"
                     + "\n8. Voltar ao Menu Principal"
-                    + "\n9. Sair");
+                    + "\n9. Sair"
+                    + "\n"
+                    + "\n"
+                    + "\n                   Acompanhe sua operação: " + realTime);
                     
             int optionThree = int.Parse(Console.ReadLine());
 
@@ -280,18 +297,22 @@ namespace Calculator
 
             Console.Clear();
             templateCalcula();
-            Console.WriteLine("Insira o valor do segundo membro: ");
+            Console.WriteLine("Insira o valor do segundo membro: "
+                + "\n"
+                + "\n"
+                + "\n                   Acompanhe sua operação: " + realTime);
             string valueTwo = Console.ReadLine();
+            realTime += valueTwo;
             int convertToDecimalTwo = 0;
 
             if (optionThree.Equals(1)) {
-                convertToDecimalTwo = ToDecimal(valueTwo, TypeBase.Binary);
+                convertToDecimalTwo = Convert.ToInt32(valueTwo, 2);
             } else if (optionThree.Equals(2)) {
-                convertToDecimalTwo = ToDecimal(valueTwo, TypeBase.Octal);
+                convertToDecimalTwo = Convert.ToInt32(valueTwo, 8);
             } else if (optionThree.Equals(3)) {
                 convertToDecimalTwo = int.Parse(valueTwo);
             } else if (optionThree.Equals(4)) {
-                convertToDecimalTwo = ToDecimal(valueTwo, TypeBase.Hexadecimal);
+                convertToDecimalTwo = Convert.ToInt32(valueTwo, 16);
             }
 
             int valueThree = 0;
@@ -316,7 +337,10 @@ namespace Calculator
                     + "\n"
                     + "\n"
                     + "\n8. Voltar ao Menu Principal"
-                    + "\n9. Sair");
+                    + "\n9. Sair"
+                    + "\n"
+                    + "\n"
+                    + "\n                   Acompanhe sua operação: " + realTime);
 
             int optionFour = int.Parse(Console.ReadLine());
 
@@ -339,19 +363,19 @@ namespace Calculator
             String convertToBase = "";
 
             if (optionFour.Equals(1)) {
-                convertToBase = ToBase(valueThree, TypeBase.Binary);
+                convertToBase = Convert.ToString(valueThree, 2);
             } else if (optionFour.Equals(2)) {
-                convertToBase = ToBase(valueThree, TypeBase.Octal);
+                convertToBase = Convert.ToString(valueThree, 8);
             } else if (optionFour.Equals(3)) {
                 convertToBase = "" + valueThree;
             } else if (optionFour.Equals(4)) {
-                convertToBase = ToBase(valueThree, TypeBase.Hexadecimal);
+                convertToBase = Convert.ToString(valueThree, 16);
             }
 
             Console.Clear();
             string format = convertToBase.Replace("\0", "");
             templateCalcula();
-            Console.WriteLine("Resultado da operação: " + format);
+            Console.WriteLine("Resultado da operação: " + realTime + " = " + format);
             Thread.Sleep(4000);
             return 1;
         }
