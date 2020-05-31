@@ -19,12 +19,17 @@ namespace Calculator
         static void Main(string[] args)
         {
             Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
             Console.WriteLine("|-------------------------------------*****-------------------------------------|");
             Console.WriteLine("|___________________________ Calculadora PPTO v0.1.0 ___________________________|");
             Console.WriteLine("|-------------------------------------*****-------------------------------------|");
             Console.WriteLine();
+            infos();
+            Console.WriteLine();
+            Console.WriteLine();
             Console.Write("Carregando");
-            for (int i = 0; i < 7; i++) {
+            for (int i = 0; i < 9; i++) {
                 Thread.Sleep(1000);
                 Console.Write(".");
             }
@@ -34,6 +39,17 @@ namespace Calculator
             do {
                 life = menuPrincipal();
             } while (life != 0);
+        }
+
+        static void infos() {
+            Console.WriteLine("\n" + "\n");
+            Console.WriteLine("--+ ------------------------------ +--");
+            Console.WriteLine("--/ <+> Autores:                   /--");
+            Console.WriteLine("--/    </> Andrezza Medeiros       /--");
+            Console.WriteLine("--/    </> Beatriz Rosa            /--");
+            Console.WriteLine("--/    </> João Oliveira           /--");
+            Console.WriteLine("--/ <-> -*-*-*-*-*-*-*-*-*-*-      /--");
+            Console.WriteLine("--+ ------------------------------ +--");
         }
 
         static int menuPrincipal() {
